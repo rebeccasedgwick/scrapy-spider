@@ -27,6 +27,32 @@ class SVNIndividualPageSpider(scrapy.Spider):
                 'highlight_3': response.css('ul > div > div:nth-child(2) > li:nth-child(1)::text').extract_first(),
                 },
             'location': response.css('.js-location-content::text').extract_first(),
+            'contacts': [
+                {
+                    'name': response.css('div:nth-child(1) > table > tbody > tr > td.js-broker-details > strong > a::text').extract_first(),
+                    'job_title': response.css('div:nth-child(1) > table > tbody > tr > td.js-broker-details > div:nth-child(2) > small::text').extract_first(),
+                    'email': response.css('div:nth-child(1) > table > tbody > tr > td.js-broker-details > div.js-broker-contact-info > a::text').extract_first(),
+                    'phone_main': response.css('div:nth-child(1) > table > tbody > tr > td.js-broker-details > div.js-broker-contact-info > div:nth-child(2) > a::text').extract_first(),
+                    'phone_office': response.css('div:nth-child(1) > table > tbody > tr > td.js-broker-details > div.js-broker-contact-info > div:nth-child(3) > a::text').extract_first(),
+                    'fax': response.css('div:nth-child(1) > table > tbody > tr > td.js-broker-details > div.js-broker-contact-info > div:nth-child(4)::text').extract_first(),
+                },
+                {
+                    'name': response.css('div:nth-child(2) > table > tbody > tr > td.js-broker-details > strong > a::text').extract_first(),
+                    'job_title': response.css('div:nth-child(2) > table > tbody > tr > td.js-broker-details > div:nth-child(2) > small::text').extract_first(),
+                    'email': response.css('div:nth-child(2) > table > tbody > tr > td.js-broker-details > div.js-broker-contact-info > a::text').extract_first(),
+                    'phone_main': response.css('div:nth-child(2) > table > tbody > tr > td.js-broker-details > div.js-broker-contact-info > div:nth-child(2) > a::text').extract_first(),
+                    'phone_office': response.css('div:nth-child(2) > table > tbody > tr > td.js-broker-details > div.js-broker-contact-info > div:nth-child(3) > a::text').extract_first(),
+                    'fax': response.css('div:nth-child(2) > table > tbody > tr > td.js-broker-details > div.js-broker-contact-info > div:nth-child(4)::text').extract_first(),
+                },
+                {
+                    'name': response.css('div:nth-child(3) > table > tbody > tr > td.js-broker-details > strong > a::text').extract_first(),
+                    'job_title': response.css('div:nth-child(3) > table > tbody > tr > td.js-broker-details > div:nth-child(2) > small::text').extract_first(),
+                    'email': response.css('div:nth-child(3) > table > tbody > tr > td.js-broker-details > div.js-broker-contact-info > a::text').extract_first(),
+                    'phone_main': response.css('div:nth-child(3) > table > tbody > tr > td.js-broker-details > div.js-broker-contact-info > div:nth-child(2) > a::text').extract_first(),
+                    'phone_office': response.css('div:nth-child(3) > table > tbody > tr > td.js-broker-details > div.js-broker-contact-info > div:nth-child(3) > a::text').extract_first(),
+                    'fax': response.css('div:nth-child(3) > table > tbody > tr > td.js-broker-details > div.js-broker-contact-info > div:nth-child(4)::text').extract_first(),
+                }
+            ]
         }
 
     def parse(self, response):
